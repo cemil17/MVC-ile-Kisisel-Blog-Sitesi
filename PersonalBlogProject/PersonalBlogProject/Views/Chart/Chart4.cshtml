@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Chart4";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<head>
+
+    <title>Grafikler</title>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $.ajax({
+
+                type: "POST",
+
+                dataType: "json",
+
+                contentType: "application/json",
+
+                url: '@Url.Action("VisualizeResultAuthor", "Chart")',
+
+                success: function (result) {
+
+                    google.charts.load('current', {
+
+                        'packages': ['corechart']
+
+                    });
+
+                    google.charts.setOnLoadCallback(function () {
+
+                        drawChart(result);
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+
+        function drawChart(result) {
+
+            var data = new google.visualization.DataTable();
+
+            data.addColumn('string', 'Author');
+
+            data.addColumn('number', 'Yazarın Yazdığı Blog Sayısı');
+
+            var dataArray = [];
+
+
+
+            $.each(result, function (i, obj) {
+
+                dataArray.push([obj.Author, obj.AuthorBlog]);
+
+            });
+
+            data.addRows(dataArray);
+
+
+
+            var columnChartOptions = {
+
+                title: "Yazar Blog Grafiği",
+
+                width: 1000,
+
+                height: 500,
+
+                bar: { groupWidth: "20%" },
+
+            };
+
+
+
+            var columnChart = new google.visualization.ColumnChart(document
+
+                .getElementById('Piechart_div'));
+
+
+
+            columnChart.draw(data, columnChartOptions);
+
+        }
+
+    </script>
+
+</head>
+<html>
+<body class="hold-transition sidebar-mini">
+    <div class="col-md-14">
+        <section class="content">
+            <div class="panel panel-body">
+                <div id="Piechart_div"></div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

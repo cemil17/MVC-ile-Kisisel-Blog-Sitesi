@@ -1,0 +1,70 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<EntityLayer.Concrete.SubscribeMail>
+
+@{
+    ViewBag.Title = "ListMail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<!--<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Projects</title>-->
+<!-- Tell the browser to be responsive to screen width -->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!-- Font Awesome -->
+<!--<link rel="stylesheet" href="~/admin2/admin3/plugins/fontawesome-free/css/all.min.css">-->
+<!-- Ionicons -->
+<!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
+<!-- overlayScrollbars -->
+<!--<link rel="stylesheet" href="~/admin2/admin3/dist/css/adminlte.min.css">-->
+<!-- Google Font: Source Sans Pro -->
+<!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>-->
+
+<body class="hold-transition sidebar-mini">
+    <div class="col-md-6">
+        <section class="content">
+            <div class="panel panel-body">
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%; color:#000000" ">#</th>
+                                <th style="width: 20%; color:#000000">
+                                    Mail
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.MailID</td>
+                                    <th><a href="mailto:@item.Mail">@item.Mail</a></th>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("ListMail", new { page }))
+
+            </div>
+
+        </section>
+    </div>
+
+</body>
+
+</html>
+
+
+

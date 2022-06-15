@@ -1,0 +1,24 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Project>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <img src="https://pebblemark.com/img/banner-img-1.png" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-5 ml-auto">
+            <h4>Neler Yapıyoruz / Yaptığımız Projeler</h4>
+            <br />
+            <ul class="ul-check list-unstyled success">
+
+                @foreach (var item in Model)
+                {
+
+    <li>
+        <a href="@item.Link">@item.ProjectName</a>
+    </li>}
+            </ul>
+        </div>
+    </div>
+</div>

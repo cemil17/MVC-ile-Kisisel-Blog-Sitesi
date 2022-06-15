@@ -1,0 +1,47 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<EntityLayer.Concrete.Comment>
+
+@{
+    ViewBag.Title = "AdminCommentListTrue";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE HTML>
+<html>
+
+<body class="cbp-spmenu-push">
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            <h1 style="color:#000000">Yorumlar</h1>
+        </div>
+        <div class="panel panel-body">
+            @foreach (var item in Model)
+            {
+                <div class="alert alert-success ">
+                    <a href="/Comment/CommentToFalse/@item.CommentID">
+                        <span class="alert-icon">
+                            <i class="fa fa-trash-o"></i>
+                        </span>
+                    </a>
+
+                    <div class="notification-info">
+                        <a href="#"><span class="label label-success">@item.UserName</span></a><b style="color:black"> @item.Blogs.BlogTitle </b>- Blog Değerlendirme Puanı: @item.RatingForBlog
+                        <ul class="clearfix notification-meta">
+                            <li class="pull-right notification-time">
+                                <span style="color:#000000">@(((DateTime)item.CommentDate).ToString("dd-MMMM-yyyy"))</span>
+                            </li>
+                            <li class="pull-left notification-sender">@item.CommentText</li>
+                        </ul>
+
+                    </div>
+                </div>
+            }
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("AdminCommentListTrue", new { page }))
+
+        </div>
+
+    </div>
+</body>
+</html>

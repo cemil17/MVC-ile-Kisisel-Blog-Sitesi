@@ -1,0 +1,17 @@
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\EntityLayer.dll
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\EntityLayer.pdb
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\EntityLayer.dll.config
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\obj\Debug\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\FluentValidation.dll
+C:\Users\Cemil KAĞAN\source\repos\PersonalBlogProject\BusinessLayer\bin\Debug\FluentValidation.xml

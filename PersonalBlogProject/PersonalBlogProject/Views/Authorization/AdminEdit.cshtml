@@ -1,0 +1,24 @@
+﻿@model EntityLayer.Concrete.Admin
+@{
+    ViewBag.Title = "AdminEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" class="form-group">
+
+    @Html.HiddenFor(x => x.AdminID, new { @class = "form-control" })
+    @Html.Label("Admin")
+    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.UserName, " ")
+    <br />
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Password)
+    <br />
+    @Html.Label("Admin Role")
+    @Html.TextBoxFor(x => x.Role, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Role)
+    <br />
+
+    <button class="btn btn-primary">Değişiklikleri Kaydet</button>
+</form>

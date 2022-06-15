@@ -1,0 +1,59 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+@{
+    ViewBag.Title = "UpdateAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+
+<body class="hold-transition sidebar-mini">
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-body">
+                    @using (Html.BeginForm("UpdateAbout", "About", FormMethod.Post))
+                    {
+                        <div class="card-body">
+                            <div class="card-header" style="color:#000000">
+                                <h3>Hakkımda Sayfası</h3>
+                                <br />
+                            </div>
+                            @foreach (var item in Model)
+                            {
+                                <input type="hidden" name="AboutID" value="@item.AboutID">
+                                <div class="form-group" style="color:#000000">
+                                    <p>Görsel 1</p>
+                                    <input type="text" name="Image1" class="form-control" value="@item.Image1">
+                                </div>
+                                <div class="form-group" style="color:#000000">
+                                    <p>Görsel 2</p>
+                                    <input type="text" name="Image2" class="form-control" value="@item.Image2">
+                                </div>
+                                <div class="form-group" style="color:#000000">
+                                    <p>Açıklama 1 </p>
+                                    <textarea name="AboutContent1" class="form-control" rows="6">@item.AboutContent1</textarea>
+                                </div>
+                                <div class="form-group" style="color:#000000">
+                                    <p>Açıklama 2 </p>
+                                    <textarea name="AboutContent2" class="form-control" rows="6">@item.AboutContent2</textarea>
+                                </div>
+                            }
+                            <button class="btn btn-success">Bilgileri Güncelle</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+
+
+
+
+

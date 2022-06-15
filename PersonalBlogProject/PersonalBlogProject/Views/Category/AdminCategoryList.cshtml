@@ -1,0 +1,106 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+
+@{
+    ViewBag.Title = "AdminCategoryList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<!--<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Projects</title>-->
+<!-- Tell the browser to be responsive to screen width -->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!-- Font Awesome -->
+<!--<link rel="stylesheet" href="~/admin2/admin3/plugins/fontawesome-free/css/all.min.css">-->
+<!-- Ionicons -->
+<!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
+<!-- overlayScrollbars -->
+<!--<link rel="stylesheet" href="~/admin2/admin3/dist/css/adminlte.min.css">-->
+<!-- Google Font: Source Sans Pro -->
+<!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>-->
+
+
+<body class="hold-transition sidebar-mini">
+    <div class="col-md-12">
+        <section class="content">
+            <div class="panel panel-body">
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%; color:#000000" ">#</th>
+                                <th style="width: 20%; color:#000000">
+                                    Kategori
+                                </th>
+                                <th class="pull-right">
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+                                        Yeni Kategori Ekle
+                                    </button>
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.CategoryID</td>
+                                    <th>@item.CategoryName</th>
+                                    <td>
+                                        <a class="btn btn-danger btn-sm" href="/Category/DeleteToCategory/@item.CategoryID">
+                                            <i class="fa fa-trash"></i>
+                                            Sil
+                                        </a>
+                                        <a class="btn btn-warning btn-sm" href="/Category/CategoryEdit/@item.CategoryID">
+                                            <i class="fa fa-pencil"></i>
+                                            Düzenle
+                                        </a>
+                                        @*<button class="btn btn-warning" data-toggle="modal" data-target="#Modal2">
+                                                Güncelle
+                                            </button>*@
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal" id="Modal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" style="color:#000000">Kategori Ekleme Paneli</h2>
+                    </div>
+                    <form method="post" action="/Category/AddToCategories/">
+                        <div class="modal-body">
+                            <label style="color:#000000">Kategori</label>
+                            <input type="text" name="CategoryName" class="form-control" />
+                            <br />
+                            <label style="color:#000000">Kategori Açıklama</label>
+                            <textarea name="CategoryDescription" rows="7" cols="50" class="form-control"></textarea>
+                            <br />
+
+                            <button class="btn btn-warning">Ekle</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+

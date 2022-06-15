@@ -1,0 +1,138 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+
+@{
+    ViewBag.Title = "AuthorBlogList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@{string color = " ";}
+@{string barColor = " ";}
+
+
+<!DOCTYPE html>
+
+<html>
+<!--<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Projects</title>-->
+<!-- Tell the browser to be responsive to screen width -->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!-- Font Awesome -->
+<!--<link rel="stylesheet" href="~/admin2/admin3/plugins/fontawesome-free/css/all.min.css">-->
+<!-- Ionicons -->
+<!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
+<!-- overlayScrollbars -->
+<!--<link rel="stylesheet" href="~/admin2/admin3/dist/css/adminlte.min.css">-->
+<!-- Google Font: Source Sans Pro -->
+<!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>-->
+
+<body class="hold-transition sidebar-mini">
+    <div class="col-md-14">
+        <section class="content">
+            <div class="panel panel-body">
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                            <tr style="color:#000000">
+                                <th style="width: 1%">#</th>
+                                <th style="width: 25%">
+                                    Bloglar
+                                </th>
+                                <th style="width:25%">Blog Değerlendirme Puanı</th>
+                                <th style="width:7%">Kategori</th>                                
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                if (item.Category.CategoryName == "Yazılım")
+                                {
+                                    color = "label label-warning";
+                                }
+
+                                if (item.Category.CategoryName == "Teknoloji")
+                                {
+                                    color = "label label-info";
+                                }
+
+                                if (item.Category.CategoryName == "Yeni Nesil Şirketler")
+                                {
+                                    color = "label label-danger";
+                                }
+
+                                if (item.Category.CategoryName == "Yatırım Haberleri")
+                                {
+                                    color = "label label-danger";
+                                }
+
+                                if (item.Category.CategoryName == "Startup")
+                                {
+                                    color = "label label-danger";
+                                }
+
+                                if (item.Category.CategoryName == "Film & Dizi")
+                                {
+                                    color = "label label-primary";
+                                }
+
+                                if (item.Category.CategoryName == "Seyahat")
+                                {
+                                    color = "label label-success";
+                                }
+
+                                if (item.BlogRating >= 85)
+                                {
+                                    barColor = "progress-bar progress-bar-striped bg-success";
+                                }
+
+                                if (item.BlogRating <= 84 && item.BlogRating >= 70)
+                                {
+                                    barColor = "progress-bar progress-bar-striped bg-info";
+                                }
+
+                                if (item.BlogRating >= 56 && item.BlogRating <= 69)
+                                {
+                                    barColor = "progress-bar progress-bar-striped";
+                                }
+
+                                if (item.BlogRating >= 0 && item.BlogRating <= 55)
+                                {
+                                    barColor = "progress-bar progress-bar-striped bg-danger";
+                                }
+                                <tr>
+                                    <td>@item.BlogID</td>
+                                    <th style="color:#000000"><a href="/Blog/BlogDetails/@item.BlogID">@item.BlogTitle</a></th>
+
+                                    <td class="project_progress">
+                                        <div class="progress progress-sm">
+                                            <div class="@barColor" role="progressbar" aria-volumenow="@item.BlogRating" aria-volumemin="0" aria-volumemax="100" style="width: @item.BlogRating%">
+                                            </div>
+                                        </div>
+                                        <small>
+                                            Aldığı Puan: @item.BlogRating
+                                        </small>
+                                    </td>
+
+                                    <td class="project-state">
+                                        <span class="@color">@item.Category.CategoryName</span>
+                                    </td>
+
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
+

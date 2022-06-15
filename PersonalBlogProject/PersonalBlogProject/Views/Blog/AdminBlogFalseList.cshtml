@@ -1,0 +1,99 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<EntityLayer.Concrete.Blog>
+
+@{
+    ViewBag.Title = "AdminBlogFalseList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@{string color = "";}
+
+<!DOCTYPE html>
+
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <div class="col-md-14">
+        <section class="content">
+            <div class="panel panel-body">
+                <div>
+                    <h3>
+                        <span style="color:#000000">
+                            Kaldırılan Bloglar
+                        </span>
+                    </h3>
+                </div>
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Başlık</th>
+                            <th scope="col">Kategori</th>
+                            <th scope="col">Tarih</th>
+                            <th scope="col">Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            if (item.Category.CategoryName == "Yazılım")
+                            {
+                                color = "label label-warning";
+                            }
+
+                            if (item.Category.CategoryName == "Teknoloji")
+                            {
+                                color = "label label-info";
+                            }
+
+                            if (item.Category.CategoryName == "Yeni Nesil Şirketler")
+                            {
+                                color = "label label-danger";
+                            }
+
+                            if (item.Category.CategoryName == "Yatırım Haberleri")
+                            {
+                                color = "label label-danger";
+                            }
+
+                            if (item.Category.CategoryName == "Startup")
+                            {
+                                color = "label label-danger";
+                            }
+
+                            if (item.Category.CategoryName == "Film & Dizi")
+                            {
+                                color = "label label-primary";
+                            }
+
+                            if (item.Category.CategoryName == "Seyahat")
+                            {
+                                color = "label label-success";
+                            }
+
+                            <tr>
+                                <th scope="row">@item.BlogID</th>
+                                <td><b><span style="color:#000000;">@item.BlogTitle</span></b></td>
+                                <td><span class="@color">@item.Category.CategoryName</span></td>
+                                <td>@(((DateTime)item.BlogDate).ToString("dd-MMMM-yyyy")) </td>
+                                <td>
+                                    <a class="btn btn-primary" href="/Blog/TrueToBlog/@item.BlogID">
+                                        Aktif Yap
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("AdminBlogFalseList", new { page }))
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

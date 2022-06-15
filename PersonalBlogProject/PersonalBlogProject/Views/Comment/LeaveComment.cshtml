@@ -1,0 +1,37 @@
+﻿@model EntityLayer.Concrete.Comment
+
+<div class="comment-form-wrap pt-5">
+    <h3 class="mb-5">Bir yorum yapın  </h3>
+    <form method="post" class="p-5 bg-light">
+        <div class="form-group">
+            <label for="name">Kullanıcı Adınız *</label>
+            @Html.TextBoxFor(x =>x.UserName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.UserName)
+        </div>
+        <div class="form-group">
+            <label for="email">Email *</label>
+            @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Mail)
+        </div>
+        <input type="hidden" name="CommentDate" value="@DateTime.Now.ToShortDateString()" />
+        <input type="hidden" name="BlogID" value="@ViewBag.d" />
+        <div class="form-group">
+            <label for="message">Yorumunuz *</label>
+            @Html.TextAreaFor(x => x.CommentText,10,30, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CommentText)
+        </div>
+        <div class="form-group" style="font-size:25px;">
+            <label for="message">Puanınız: </label>
+            <label>@Html.RadioButton("RatingForBlog", 100)😍</label>
+            <label>@Html.RadioButton("RatingForBlog", 80)😎</label>
+            <label>@Html.RadioButton("RatingForBlog", 60)👍</label>
+            <label>@Html.RadioButton("RatingForBlog", 40)🤔</label>
+            <label>@Html.RadioButton("RatingForBlog", 20)👎</label>
+
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Yorum Yap" class="btn btn-primary">
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PersonelBlogLayout.cshtml";
+}
+
+
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/web/images/img_4.jpg');">
+    <div class="container">
+        <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="post-entry text-center">
+                    <h1 class="">Hakkımızda</h1>
+                    <p class="lead mb-4 text-white">Sizler için güzel içerik yazan yazarlarımız gelin yakından tanıyalım :)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 order-md-2">
+                    <img src="@item.Image1" height="150" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-5 mr-auto order-md-1">
+                    <h2>Biz Kimiz? </h2>
+
+                    <p>@item.AboutContent1</p>
+                    <ul class="ul-check list-unstyled success">
+                        <li>Sizin için Türkiye'de ve dünya'da öne çıkan girişimcilik ve teknoloji önerilerini paylaşıyor ve harika makaleler yayınlıyoruz.</li>
+                        <li>Yirmiye yakın yazarımızla her gün sizlere inanılmaz güzel içerikler hazırlıyoruz.</li>
+                        <li>Bu platform üzerinden bizlere destek olabilir bizi hızlandırabilirsiniz. </li>
+                        <li>Umarım beğenirsiniz.</li>
+                    </ul>
+
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+<div class="site-section bg-light">
+    @Html.Action("ProjectPage", "About")
+</div>
+
+@Html.Action("MeetTheTeam", "About")
+
+@Html.Action("AddMail", "MailSubscribe")
+
+@Html.Action("Footer", "About")

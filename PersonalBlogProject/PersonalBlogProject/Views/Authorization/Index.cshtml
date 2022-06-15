@@ -1,0 +1,94 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <div class="col-md-12">
+        <section class="content">
+            <div class="panel panel-body">
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%; color:#000000" ">#</th>
+                                <th style="width: 20%; color:#000000">
+                                    Admin
+                                </th>
+                                <th>Admin Rol</th>
+                                <th class="pull-right">
+                                    <button class="btn btn-info" data-toggle="modal" data-target="#Modal1">
+                                        Yeni Admin Ekle
+                                    </button>
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.AdminID</td>
+                                    <th>@item.UserName</th>
+                                    <td>@item.Role</td>
+                                    <td>
+                                        <a class="btn btn-danger btn-sm" href="/Authorization/AdminRemove/@item.AdminID">
+                                            <i class="fa fa-trash"></i>
+                                            Sil
+                                        </a>
+                                        <a class="btn btn-warning btn-sm" href="/Authorization/AdminEdit/@item.AdminID">
+                                            <i class="fa fa-pencil"></i>
+                                            Düzenle
+                                        </a>
+
+                                        @*<button class="btn btn-warning" data-toggle="modal" data-target="#Modal2">
+                                                Güncelle
+                                            </button>*@
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal" id="Modal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" style="color:#000000">Admin Ekleme Paneli</h2>
+                    </div>
+                    <form method="post" action="/Authorization/AddToAdmin/">
+                        <div class="modal-body">
+                            <label style="color:#000000">Admin Kullanıcı Adı: </label>
+                            <input type="text" name="UserName" class="form-control" />
+                            <br />
+                            <label style="color:#000000">Şifre:</label>
+                            <input type="text" name="Password" class="form-control" />
+                            <br />
+                            <label style="color:#000000">Admin Rol:</label>
+                            <input type="text" name="Role" class="form-control" />
+                            <br />
+                            <button class="btn btn-success">Ekle</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+
